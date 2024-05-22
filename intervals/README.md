@@ -27,5 +27,7 @@ which has one single value for intervals on which  k(c)  is affine, and two valu
 There may be other comments in these files:
 - Usually there is a header with the file name and summary of the data : how many data items (i.e., "intervals"),
   at which indices/c-values occur the transitions from affine to hyperbolic (and conversely), ...
-- There may also be single-line comments of the form "\\ ..." preceding some of the data lines, with information about "incidents" during the computation.
+- There may also be single-line comments of the form `\\\\ ...` preceding some of the data lines, with information about "incidents" during the computation.
   (For example, when heuristics suggested to back up one step and re-do the scan with a smaller step size, in order to avoid to miss the border of an interval.)
+- In exceptional cases, there is a multi-line comment /* ... */ between two data lines, when there is something noteworthy to say at that point.
+  (Affine / hyperbolic transition, ...)
