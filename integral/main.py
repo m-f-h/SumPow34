@@ -1,4 +1,4 @@
-""" main.py - (c) 2023 - 2024 by M.F.Hasler & G. Melfi
+""" main.py - (c) 2023 - 2024 by M. F. Hasler & G. Melfi
 
 The purpose of this program is to compute the lower bound, 
 given in Theorem 1 of the paper, on the counting function  
@@ -22,7 +22,7 @@ To keep things simple yet efficient, we use Romberg extrapolation,
 with numerical evaluation of the function at points t[k] = a + k*(b-a)/2^N
 for k = 0, ..., N increasingly larger until the required precision is reached.
 """
-from function_k import k, points_of_interest
+from function_k import k_min, points_of_interest
 from integrals import Romberg
 
 # In the final application, we will provide a more complete list
@@ -53,7 +53,7 @@ def compute_exponent(k: callable, points: list = [1, c_o, 4/3],
 
 if __name__ == '__main__':
     # use up to 2^12 = 4096 function evaluations *on each subinterval*
-    compute_exponent(k_min, list(points_of_interest.values()), 
+    compute_exponent(k_min, sorted(points_of_interest.values()),
                      eps = 1e-7, Nmax = 12, verbose = 1) # fct. k_min
 
 """ Output:
