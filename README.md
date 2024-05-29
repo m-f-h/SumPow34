@@ -5,6 +5,7 @@ In this GitHub repository we collect data and PARI/GP and Python code related to
 
 More precisely, the computational part of this research work consisted of the study of the function k(c) defined in Sect. 2, Def. 1, eq. (3), 
 and the calculation of the numerical value of the exponent &gamma; in the asymptotic bound for the counting function,
+
 > P<sub>{3,4}</sub>(x)  &Gt; x<sup>&gamma;</sup> ,
 
 given in the main result, Theorem 1. As detailed especially towards the end of the proof of this theorem,
@@ -21,4 +22,5 @@ These intervals have borders which are rational numbers,
 except at points where the nature of the function changes from (piecewise) affine to hyperbolic or conversely.
 Those points are of the form  c[i] = (m[i] +- sqrt(d[i]))/n[i] = r[i] +- sqrt(s[i]), where m[i], n[i], d[i] are integers and r[i], s[i] are rationals.
 
-The folder [intervals](intervals) lists the data we have obtained concerning these intervals, and the PARI/GP programs used to compute this data.
+The folder [intervals](intervals) lists data we have obtained concerning these intervals, and the PARI/GP programs used to compute it.
+(This data is provided on informative grounds, but it is in the current approach not used for the calculation of the asymptotic bound.)
