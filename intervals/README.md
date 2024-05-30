@@ -1,9 +1,9 @@
 # intervals
 In this directory we put .gp files (PARI/GP source files) with the data for the intervals we have computed with PARI/GP.
 
-We are interested in (maximal) intervals  J[i] = [c[i-1], c[i]]  on which the function k(c) has a given form,
+We are interested in (maximal) intervals  J[i] = [c[i-1], c[i]]  on which the function k(c) has a continuous derivative and a given form,
 
-- either affine,  k(c)  =  k[i-1] + slope[i] * (c - c[i-1])  =  k[i] + slope[i] * (c - c[i])  [where the last parenthesis <= 0] 
+- either affine,  k(c)  =  k[i-1] + slope[i] * (c - c[i-1])  =  k[i] + slope[i] * (c - c[i]),  where the last parenthesis is negative for c[i-1] < c < c[i]
 - or hyperbolic,  k(c)  =  p[i] + q[i] / c
  
 with fixed  slope  or  p, q  values.  (Obviously,  k[i]  =  k( c[i] )  =  p[i] + q[i]/c[i]  if hyperbolic.)
@@ -27,7 +27,8 @@ which has one single value for intervals on which  k(c)  is affine, and two valu
 There may be other comments in these files:
 - Usually there is a header with the file name and summary of the data : how many data items (i.e., "intervals"),
   at which indices/c-values occur the transitions from affine to hyperbolic (and conversely), ...
-- There may also be single-line comments of the form `\\ ...` preceding some of the data lines, with information about "incidents" during the computation.
-  (For example, when heuristics suggested to back up one step and re-do the scan with a smaller step size, in order to avoid to miss a subinterval.)
-- In exceptional cases, there is a multi-line comment /* ... */ between two data lines, when there is something noteworthy to say at that point.
+- There may also be single-line comments of the form `\\ ...` preceding some of the data lines, with details about the computation.
+  (For example, when the algorithm suggested to back up one or two steps and re-do the scan with a smaller step size, in order to avoid to miss a subinterval.)
+- Sometimes, there is a multi-line comment /* ... */ between two data lines,
+  when there is something noteworthy to say at that point.
   (Affine / hyperbolic transition, ...)
