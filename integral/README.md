@@ -13,4 +13,4 @@ over  t &isin; [0, log(4/3)].
 
 The function `k(c)` as well as the points where it has its discontinuity and other "irregularities" are defined in [function_k.py](function_k.py).
 
-The function `Romberg` used for the numerical integration is defined in [integral.py](integral.py).
+The function `Romberg` used for the numerical integration is defined in [integrals.py](integrals.py).
