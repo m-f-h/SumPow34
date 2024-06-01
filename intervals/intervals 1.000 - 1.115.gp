@@ -1,31 +1,26 @@
 /* intervals 1.000 - 1.115.txt
 
+   First computed Nov. 2023 ; edited & recomputed Dec. 2023 - May 2024
+
    This lists the first 157 intervals, 
-   from c[0] = 1.0 to c[157] = (sqrt(1317648910247977) - 35239219)/950272,
-   
-   as usual in the format:
-   
-   c_list[i] = [/* approx.val. =*/ c[i],  k(c[i]),  [slope[i]]], \\ dist = c[i]-c[i-1]
+   from  c[0] = 1.0  to  c[157] = c* = (sqrt(1317648910247977) - 35239219)/950272,
+                                = c(1)  in notations from the paper, Table 1.
+   as usual in the format: 
 
-   This table was not produced as output of the pq_scan() function used 
-   to compute such tables in other ranges, but using data from the vector 
-   c_list[1..158] computed with the function make_c_list(start=1, end=c_star),
-   which was fed into the function:
+   interval_list[i] = [/* approx.val. =*/ c[i],  k(c[i]),  [slope[i+1]]], \\ dist = c[i]-c[i-1]
 
-/* To print/save the "interval list": */ \\ <- this ends the comments!
-make_intervals(c_list=c_list)={ my( k_list = [k(c) | c <- c_list],
-  slope = [( k_list[i] - k_list[i-1] ) / (c_list[i] - c_list[i-1]) | i<-[2..#c_list]] );
-  fprint( "c_list_1={[/***  List of \"intervals\" from c = %s to %s ***/\n", \\ to "pad": ]}
-          val(c_list[1]), val(c_list[-1..-1][1]));
-  /* fprint() does some additional formatting and writes to an output file
-     if defined through { file = filopen("/tmp/file.txt", "a") }. */
-  for( i=1, #c_list, 
-       fprint("[/*%.8f =*/%13s,%20s,%20s],\t\\\\dist = %.7g\n",
-         c_list[i],c_list[i],k_list[i], [if(i<=#slope, slope[i])], if(i>1, c_list[i]-c_list[i-1]))
-  ); 
-  /* {[ */ fprint("\n]} /*** end of clist_1 ***/")}
+   (There are only affine, no hyperbolic parts in this range.)   
+   See the README file for more about the file format.
 
-\\make_intervals()      /* Remark: below, c[0] = 1 is in line # 30, so index i = (line #) - 30 */
+   This table was not produced directly as output of the function adaptive_scan()
+   as for many other regions, but using the function make_interval_table(c_list)
+   with a vector c_list[1..158] = [ c[0], ... c[157] ] computed with the function
+   intervals( 1, c_star \1e-6/10^6 ), where c_star = c* = c[157] given above:
+
+# c_list_1 = intervals( 1, c_star \1e-6/10^6 ) \\ = 186
+# c_list_1 = merge_intervals( c_list_1 )    \\ = 158
+make_intervals()      /* Remark: below, c[0] = 1 is in line # 25, so index i = (line #) - 25
+*/
 c_list_1=[{/***  List of "intervals" from c[0] = 1.0 to c* ~ 1.11569637 ***/
 [/*1.00000000 =*/            1,           1015/1458,         [12440/729]],	\\dist = 0.e-19
 [/*1.00195313 =*/      513/512,         11345/15552,          [3976/243]],	\\dist = 0.001953125
@@ -188,8 +183,9 @@ c_list_1=[{/***  List of "intervals" from c[0] = 1.0 to c* ~ 1.11569637 ***/
  * 0.79921970974441080128885390063451531995 = (sqrt(1317648910247977) - 33117491)/3981312, []],
  *
  * The last two lines above are commented out: 
- * they correspond to  c[157] = c*  which is no more part of this list,
- * but the first term in the next list, c_list_115.
+ * they correspond to  c[157] = c* = c(1)  (in notation of the paper, Table 1)
+ * which is no more part of this list, but the first term in the next list,
+ * interval_list_115.
  *
  * The exact value of  (c[157], k[157])  is computed as intersection of
  * the affine curve on the interval J[157] starting at c[156] = 537/482
@@ -205,4 +201,4 @@ c_list_1=[{/***  List of "intervals" from c[0] = 1.0 to c* ~ 1.11569637 ***/
  * arithmetc with sqrt(...) expressions, provided in the program files.
  * In the case at hand, it is sufficient to replace sqrt(xxx) by sqrt_xxx.)
  */
-]} /*** end of c_list_1 ***/
+]} /*** end of interval_list_1 ***/
